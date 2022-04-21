@@ -1,0 +1,68 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Driving Licence Validity</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Driving Licence Validity</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-12 mx-auto">
+						<div class="d-flex justify-content-end">
+							<a href="{% url 'driving_licence_validity_create' %}" class="btn btn-primary"><i class="bx bx-plus"></i>licence validity<a/>
+						</div>
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								<div class="table-responsive">
+								<table id="example2" class="table table-striped table-bordered" style="width:100%">
+									<thead>
+										<tr>
+											<th scope="col">Driver</th>
+											<th scope="col">Active Date</th>
+											<th scope="col">Expiry Date</th>
+											<th scope="col">Licence No.</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% for i in driving_licence_validity %}
+										<tr>
+
+											<td>{{i.driver}}</td>
+											<td>{{i.active_date}}</td>
+											<td>{{i.expiry_date}}</td>
+											<td>{{i.licence_no}}</td>
+											<td><a href="{{i.licence_id}}/driving_licence_validity_update/"><span style="font-size:15px" class="bx bx-pencil text-success" aria-hidden="true"></span></a>
+												<a href="{{i.licence_id}}/driving_licence_validity_delete/"><span style="font-size:15px" class="bx bx-trash text-danger" aria-hidden="true"></span></a></td>
+										</tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+
+{% endblock %}

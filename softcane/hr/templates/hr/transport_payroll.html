@@ -1,0 +1,78 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Transport Payroll Codes</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Transport Payroll Codes</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-12 mx-auto">
+
+						<div class="d-flex justify-content-end">
+							<a href="{% url 'transport_payroll_create' %}" class="btn btn-primary">Add transport payroll code<a/>
+						</div>
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								<div class="table-responsive">
+								<table id="example" class="table table-bordered mb-0 table-striped table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Single Bundle</th>
+											<th scope="col">Double Bundle</th>
+											<th scope="col">Weighing Clerk Bundle</th>
+											<th scope="col">Field Clerk Bundle</th>
+											<th scope="col">Cameco Operator</th>
+											<th scope="col">Bell Operator</th>
+											<th scope="col">Winch Operator</th>
+											<th scope="col">Loader</th>
+											<th scope="col">Effective Date</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% for i in transport_payroll %}
+										<tr>
+											<td>{{i.single_bundle}}</td>
+											<td>{{i.double_bundle}}</td>
+											<td>{{i.weighing_clerk_bundle}}</td>
+											<td>{{i.field_clerk_bundle}}</td>
+											<td>{{i.cameco_operator}}</td>
+											<td>{{i.bell_operator}}</td>
+											<td>{{i.winch_operator}}</td>
+											<td>{{i.loader}}</td>
+											<td>{{i.created_date}}</td>
+											<td><a href="{{i.transport_pay_roll_rate_id}}/transport_payroll_update/"><span style="font-size:15px" class="bx bx-pencil text-success" aria-hidden="true"></span></a>
+												<a href="{{i.transport_pay_roll_rate_id}}/transport_payroll_delete/"><span style="font-size:15px" class="bx bx-trash text-danger" aria-hidden="true"></span></a></td>
+										</tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+
+{% endblock %}

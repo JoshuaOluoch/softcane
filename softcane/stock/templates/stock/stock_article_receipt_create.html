@@ -1,0 +1,157 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Stock Articles Receipt</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Stock receipt entry</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-12 mx-auto">
+						<h6 class="mb-0 text-uppercase">Add stock receipt</h6>
+
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								{% load crispy_forms_tags %}
+								  <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+
+            <table class="table">
+                {{ familymembers.management_form }}
+
+                {% for form in familymembers.forms %}
+                    {% if forloop.first %}
+                        <thead>
+                        <tr>
+                            {% for field in form.visible_fields %}
+                                <th>{{ field.label|capfirst }}</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                    {% endif %}
+                    <tr class="{% cycle row1 row2 %} formset_row">
+                        {% for field in form.visible_fields %}
+                            <td>
+                                {# Include the hidden fields in the form #}
+                                {% if forloop.first %}
+                                    {% for hidden in form.hidden_fields %}
+                                        {{ hidden }}
+                                    {% endfor %}
+                                {% endif %}
+                                {{ field.errors.as_ul }}
+                                {{ field }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <input type="submit" value="Save"/> <a href="{% url 'stock_article_receipt' %}">back to the list</a>
+        </form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+    <script src="{% static 'formset/jquery.formset.js' %}"></script>
+    <script type="text/javascript">
+        $('.formset_row').formset({
+            addText: 'Add more',
+            deleteText: 'delete',
+            prefix: 'familymember_set'
+        });
+    </script>
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Stock Articles Receipt</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Stock receipt entry</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <div class="row">
+            <div class="col-xl-12 mx-auto">
+                <h6 class="mb-0 text-uppercase">Add stock receipt</h6>
+
+                <hr/>
+                <div class="card">
+
+                    <div class="card-body">
+                        {% load crispy_forms_tags %}
+                        <form method="post" class="uniForm">
+                            {{ stockItems.management_form }}
+
+                            {{ form | crispy }}
+                            <div class='table-responsive'>
+                                <table class="table">
+                                    {{ stockItems.management_form }}
+
+                                    {% for form in stockItems.forms %}
+                                    {% if forloop.first %}
+                                    <thead>
+                                    <tr>
+                                        {% for field in form.visible_fields %}
+                                        <th>{{ field.label|capfirst }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                    </thead>
+                                    {% endif %}
+                                    <tr class="formset_row">
+                                        {% for field in form.visible_fields %}
+                                        <td>
+                                            {# Include the hidden fields in the form #}
+                                            {% if forloop.first %}
+                                            {% for hidden in form.hidden_fields %}
+                                            {{ hidden }}
+                                            {% endfor %}
+                                            {% endif %}
+                                            {{ field.errors.as_ul }}
+                                            {{ field }}
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+							<p><input type='submit' value='Save' class='btn btn-success'></p>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end row-->
+    </div>
+</div>
+<!--end page wrapper -->
+
+
+
+
+{% endblock %}

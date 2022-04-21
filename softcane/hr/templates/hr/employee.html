@@ -1,0 +1,80 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Employees</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Employees</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-12 mx-auto">
+
+						<div class="d-flex justify-content-end">
+							<a href="{% url 'employee_create' %}" class="btn btn-primary">Add employee<a/>
+						</div>
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								<div class="table-responsive">
+								<table id="example" class="table table-bordered mb-0 table-striped table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Code</th>
+											<th scope="col">First Name</th>
+											<th scope="col">Last Name</th>
+											<th scope="col">Designation</th>
+											<th scope="col">Department</th>
+											<th scope="col">ID No</th>
+											<th scope="col">KRA PIN</th>
+											<th scope="col">Gender</th>
+											<th scope="col">Address</th>
+											<th scope="col">Account No</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% for i in employees %}
+										<tr>
+											<th scope="row">{{i.employee_code}}</th>
+											<td>{{i.employee_first_name}}</td>
+											<td>{{i.employee_last_name}}</td>
+											<td>{{i.employee_designation}}</td>
+											<td>{{i.employee_department}}</td>
+											<td>{{i.employee_id_number}}</td>
+											<td>{{i.employee_kra_pin}}</td>
+											<td>{{i.employee_sex}}</td>
+											<td>{{i.employee_address}}</td>
+											<td>{{i.employee_account_number}}</td>
+											<td><a href="{{i.employee_id}}/employee_update/"><span style="font-size:13px" class="bx bx-pencil text-success" aria-hidden="true"></span></a>
+												<a href="{{i.employee_id}}/employee_delete/"><span style="font-size:13px" class="bx bx-trash text-danger" aria-hidden="true"></span></a></td>
+										</tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+
+{% endblock %}

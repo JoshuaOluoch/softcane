@@ -1,0 +1,213 @@
+{% load static %}
+<!--sidebar wrapper -->
+		<div class="sidebar-wrapper" data-simplebar="true">
+			<div class="sidebar-header">
+				<div>
+					<img src="{% static 'dashboard/assets/images/logo-icon.png' %}" class="logo-icon" alt="logo icon">
+				</div>
+				<div>
+					<h4 class="logo-text">Softcane</h4>
+				</div>
+				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
+				</div>
+			</div>
+			<!--navigation-->
+			<ul class="metismenu" id="menu">
+				<li>
+					<a href="{% url 'index' %}">
+						<div class="parent-icon"><i class="bx bx-home-circle"></i>
+						</div>
+						<div class="menu-title">Dashboard</div>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i>
+						</div>
+						<div class="menu-title">Configurations</div>
+					</a>
+					<ul>
+						<li> <a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Vehicles</a>
+							<ul>
+								<li> <a href="{% url 'vehicle-types' %}"><i class="bx bx-caret-right"></i>Vehicles Type List</a></li>
+								<li><a href="{% url 'vehicle' %}"><i class="bx bx-caret-right"></i>Vehicles List</a></li>
+							</ul>
+						</li>
+						<li> <a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Location</a>
+							<ul>
+								<li><a href="{% url 'branch' %}"><i class="bx bx-caret-right"></i>Branch</a></li>
+								<li><a href="{% url 'zones' %}"><i class="bx bx-caret-right"></i>Zone</a></li>
+								<li><a href="{% url 'sublocation' %}"><i class="bx bx-caret-right"></i>Sub Location</a></li>
+								<li><a href="{% url 'field' %}"><i class="bx bx-caret-right"></i>Field</a></li>
+							</ul>
+
+						</li>
+						{% if user.role == 'admin' %}
+
+						<li> <a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Accounting</a>
+							<ul>
+								<li><a href="{% url 'account_headings' %}"><i class="bx bx-caret-right"></i>Main Headings</a></li>
+								<li><a href="{% url 'account_groupings' %}"><i class="bx bx-caret-right"></i>Sub Groupings</a></li>
+								<li><a href="{% url 'general_ledger' %}"><i class="bx bx-caret-right"></i>General Ledger</a></li>
+								<li><a href="{% url 'asset_groupings' %}"><i class="bx bx-caret-right"></i>Assets Group</a></li>
+								<li><a href="{% url 'asset_register' %}"><i class="bx bx-caret-right"></i>Assets Register</a></li>
+								<li><a href="{% url 'vat_codes' %}"><i class="bx bx-caret-right"></i>V.A.T Definitions</a></li>
+								<li><a href="{% url 'customers' %}"><i class="bx bx-caret-right"></i>Customers</a></li>
+								<li><a href="{% url 'suppliers' %}"><i class="bx bx-caret-right"></i>Suppliers</a></li>
+							</ul>
+						</li>
+						{% endif %}
+						<li> <a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Stock</a>
+							<ul>
+								<li><a href="{% url 'stock_categories' %}"><i class="bx bx-caret-right"></i>Stock Categories</a></li>
+								<li><a href="{% url 'stock_items' %}"><i class="bx bx-caret-right"></i>Stock Items</a></li>
+								<li><a href="{% url 'fuel_type' %}"><i class="bx bx-caret-right"></i>Fuel Type</a></li>
+								<li><a href="{% url 'tank' %}"><i class="bx bx-caret-right"></i>Fuel Tanks</a></li>
+								<li><a href="{% url 'fuel_pump' %}"><i class="bx bx-caret-right"></i>Fuel Pumps</a></li>
+							</ul>
+
+						</li>
+						<li> <a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Human Resource</a>
+							<ul>
+								<li><a href="{% url 'designation' %}"><i class="bx bx-caret-right"></i>Designation</a></li>
+								<li><a href="{% url 'department' %}"><i class="bx bx-caret-right"></i>Departments</a></li>
+								<li><a href="{% url 'employee' %}"><i class="bx bx-caret-right"></i>Employees</a></li>
+								<li><a href="{% url 'transport_payroll' %}"><i class="bx bx-caret-right"></i>Transport Payroll Rate</a></li>
+								<li><a href="{% url 'payroll_code' %}"><i class="bx bx-caret-right"></i>Payroll Code</a></li>
+								<li><a href="{% url 'paye_band' %}"><i class="bx bx-caret-right"></i>Paye Band</a></li>
+								<li><a href="{% url 'nhif_band' %}"><i class="bx bx-caret-right"></i>NHIF Bands</a></li>
+								<li><a href="{% url 'loader' %}"><i class="bx bx-caret-right"></i>Loaders</a></li>
+							</ul>
+
+						</li>
+
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-wrench'></i></div>
+						<div class="menu-title">Transactions</div>
+					</a>
+					<ul>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Transport</a>
+							<ul>
+								<li> <a href="{% url 'trip' %}"><i class="bx bx-caret-right"></i>Trips</a></li>
+
+								<li> <a href="{% url 'packed_cane' %}"><i class="bx bx-caret-right"></i>Parked Cane</a></li>
+								<li> <a href="{% url 'loaders_entry' %}"><i class="bx bx-caret-right"></i>Loaders</a></li>
+								<li> <a href="{% url 'towing' %}"><i class="bx bx-caret-right"></i>Towing</a></li>
+								<li> <a href="{% url 'pickup_canter_control' %}"><i class="bx bx-caret-right"></i>Pickup & Canter Control</a></li>
+								<li> <a href="{% url 'ticket_reconciliation' %}"><i class="bx bx-caret-right"></i>Ticket Reconciliation</a></li>
+								<li> <a href="{% url 'trailer_attachment' %}"><i class="bx bx-caret-right"></i>Trailer Attachment</a></li>
+								<li> <a href="{% url 'insurance_validity' %}"><i class="bx bx-caret-right"></i>Insurance</a></li>
+								<li> <a href="{% url 'driving_licence_validity' %}"><i class="bx bx-caret-right"></i>Driving Licence</a></li>
+							</ul>
+						</li>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Accounting</a>
+							<ul>
+								<li><a href="{% url 'journal_entry' %}"><i class="bx bx-caret-right"></i>Journal Entries</a></li>
+								<li><a href="{% url 'customer_transaction' %}"><i class="bx bx-caret-right"></i>Customer Transactions</a></li>
+                                <li><a href="{% url 'supplier_transaction' %}"><i class="bx bx-caret-right"></i>Supplier Transactions</a></li>
+								<li><a href="{% url 'payment_receipt' %}"><i class="bx bx-caret-right"></i>Receive Payments</a></li>
+								<li><a href="{% url 'payment_made' %}"><i class="bx bx-caret-right"></i>Make Payments</a></li>
+							</ul>
+						</li>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Stock</a>
+							<ul>
+								<li> <a href="{% url 'fuel_consumption' %}"><i class="bx bx-caret-right"></i>Fuel Issues</a></li>
+								<li> <a href="{% url 'fuel_readings' %}"><i class="bx bx-caret-right"></i>Daily Fuel Readings</a></li>
+								<li><a href="{% url 'stock_article_receipt' %}"><i class="bx bx-caret-right"></i>Stock Receipts</a></li>
+								<li><a href="{% url 'stock_article_issue' %}"><i class="bx bx-caret-right"></i>Stock Issues</a></li>
+								<li><a href="{% url 'stock_article_adjustment' %}"><i class="bx bx-caret-right"></i>Stock Adjustments</a></li>
+
+							</ul>
+						</li>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Employees</a>
+							<ul>
+								<li><a href="{%  url 'attendance' %}"><i class="bx bx-caret-right"></i>Attendance</a></li>
+								<li><a href="{%  url 'allowancesDeductions' %}"><i class="bx bx-caret-right"></i>Allowance and Deduction</a></li>
+								<li><a href="{% url 'holidayPay' %}"><i class="bx bx-caret-right"></i>Holiday Pay</a></li>
+								<li><a href="#"><i class="bx bx-caret-right"></i>Payroll Update</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				{% if user.role == 'admin' %}
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-line-chart-down'></i></div>
+						<div class="menu-title">Reports</div>
+					</a>
+					<ul>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Transport</a>
+							<ul>
+								<li> <a href="{% url 'trip_report' %}"><i class="bx bx-caret-right"></i>Trips</a></li>
+								<li> <a href="{% url 'parked_cane_report' %}"><i class="bx bx-caret-right"></i>Parked Cane</a></li>
+								<li> <a href="{% url 'loaders_report' %}"><i class="bx bx-caret-right"></i>Loaders</a></li>
+								<li> <a href="{% url 'towing_report' %}"><i class="bx bx-caret-right"></i>Towing</a></li>
+								<li> <a href="{% url 'pickups_canter_control_report' %}"><i class="bx bx-caret-right"></i>Pickup & Canter Control</a></li>
+								<li> <a href="{% url 'ticket_reconciliation_report' %}"><i class="bx bx-caret-right"></i>Ticket Reconciliation</a></li>
+								<li> <a href="{% url 'trailer_attachment_report' %}"><i class="bx bx-caret-right"></i>Trailer Attachment</a></li>
+								<li> <a href="{% url 'insurance_validity_report' %}"><i class="bx bx-caret-right"></i>Insurance</a></li>
+								<li> <a href="{% url 'driving_licence_report' %}"><i class="bx bx-caret-right"></i>Driving Licence</a></li>
+							</ul>
+						</li>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Accounting</a>
+							<ul>
+								<li><a href="{% url 'journal_entries_report' %}"><i class="bx bx-caret-right"></i>Journal Entries</a></li>
+								<li><a href="{% url 'customer_transaction_report' %}"><i class="bx bx-caret-right"></i>Customer Transactions</a></li>
+                                <li><a href="{% url 'supplier_transaction_report' %}"><i class="bx bx-caret-right"></i>Supplier Transactions</a></li>
+								<li><a href="{% url 'receive_payment_report' %}"><i class="bx bx-caret-right"></i>Receive Payments</a></li>
+								<li><a href="{% url 'make_payment_report' %}"><i class="bx bx-caret-right"></i>Make Payments</a></li>
+							</ul>
+						</li>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Stock</a>
+							<ul>
+								<li> <a href="{% url 'fuel_consumption_report' %}"><i class="bx bx-caret-right"></i>Fuel Issues</a></li>
+								<li> <a href="{% url 'fuel_readings_report' %}"><i class="bx bx-caret-right"></i>Daily Fuel Readings</a></li>
+								<li><a href="{% url 'stock_article_report' %}"><i class="bx bx-caret-right"></i>Stock Receipts</a></li>
+								<li><a href="{% url 'stock_issue_report' %}"><i class="bx bx-caret-right"></i>Stock Issues</a></li>
+								<li><a href="{% url 'stock_adjustment_report' %}"><i class="bx bx-caret-right"></i>Stock Adjustments</a></li>
+
+							</ul>
+						</li>
+						<li><a class="has-arrow" href="javascript:;"><i class="bx bx-caret-right"></i>Employees</a>
+							<ul>
+								<li><a href="{% url 'attendance_report' %}"><i class="bx bx-caret-right"></i>Attendance</a></li>
+								<li><a href="{% url 'allowances_deductions_report' %}"><i class="bx bx-caret-right"></i>Allowance and Deduction</a></li>
+								<li><a href="{% url 'holidaypay_report' %}"><i class="bx bx-caret-right"></i>Holiday Pay</a></li>
+								<li><a href="#"><i class="bx bx-caret-right"></i>Payroll Update</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				{% endif %}
+				{% if user.role == 'admin' %}
+
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-user-circle'></i>
+						</div>
+						<div class="menu-title">Users</div>
+					</a>
+					<ul>
+						<li> <a href="{% url 'users' %}"><i class="bx bx-caret-right"></i>System Users</a>
+						</li>
+						<li> <a href="{% url 'register' %}"><i class="bx bx-caret-right"></i>Register User</a>
+						</li>
+					</ul>
+				</li>
+				{% endif %}
+				<li>
+					<a href="{% url 'logout' %}">
+						<div class="parent-icon"><i class='bx bxs-log-out-circle'></i>
+						</div>
+						<div class="menu-title">Logout</div>
+					</a>
+				</li>
+
+
+			</ul>
+			<!--end navigation-->
+		</div>
+		<!--end sidebar wrapper -->

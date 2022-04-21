@@ -1,0 +1,74 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Vehicles</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Vehicle Type</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-9 mx-auto">
+						<h6 class="mb-0 text-uppercase">Vehicle Type</h6>
+						<div class="d-flex justify-content-end">
+							<a href="{% url 'vehicle_create' %}" class="btn btn-primary btn-sm">Add vehicle<a/>
+						</div>
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								<div class="table-responsive">
+								<table id="example" class="table table-bordered mb-0 table-striped table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Code</th>
+											<th scope="col">Registration</th>
+											<th scope="col">Vehicle make</th>
+											<th scope="col">Model</th>
+											<th scope="col">Body type</th>
+											<th scope="col">Body color</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% for i in vehicles %}
+										<tr>
+											<th scope="row">{{i.code}}</th>
+											<td>{{i.registration}}</td>
+											<td>{{i.make}}</td>
+											<td>{{i.vehicle_model}}</td>
+											<td>{{i.body_type}}</td>
+											<td>{{i.body_color}}</td>
+											<td>
+												<a href="{{i.vehicle_id}}/vehicle_update/"><span style="font-size:15px" class="bx bx-pencil text-success" aria-hidden="true"></span></a>
+												<a href="{{i.vehicle_id}}/vehicle_delete/"><span style="font-size:15px" class="bx bx-trash text-danger" aria-hidden="true"></span></a>
+											</td>
+										</tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+
+{% endblock %}

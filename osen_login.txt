@@ -1,0 +1,4 @@
+username:gordon.osen
+Password: Pickle123*
+
+User Role: clerk

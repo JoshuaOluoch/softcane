@@ -1,0 +1,66 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Loaders</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Loaders</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-9 mx-auto">
+
+						<div class="d-flex justify-content-end">
+							<a href="{% url 'loader_create' %}" class="btn btn-primary">Register Loader<a/>
+						</div>
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								<div class="table-responsive">
+								<table id="example" class="table table-bordered mb-0 table-striped table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Loader Name</th>
+											<th scope="col">Date registered</th>
+											<th scope="col">Active</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% for i in loaders %}
+										<tr>
+											<td>{{i.name}}</td>
+											<td>{{i.date_registered}}</td>
+											<td>{{i.active}}</td>
+											<td><a href="{{i.loaders_id}}/loader_update/"><span style="font-size:15px" class="bx bx-pencil text-success" aria-hidden="true"></span></a>
+												<a href="{{i.loaders_id}}/loader_delete/"><span style="font-size:15px" class="bx bx-trash text-danger" aria-hidden="true"></span></a></td>
+										</tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+
+{% endblock %}

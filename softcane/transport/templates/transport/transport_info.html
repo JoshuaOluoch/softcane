@@ -1,0 +1,77 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Daily Transport Information Update</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Daily Transport Information Update</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-12 mx-auto">
+						<div class="d-flex justify-content-end">
+							<a href="{% url 'transport_info_create' %}" class="btn btn-primary btn-sm"><i class="bx bx-plus"></i>Day's Transport Information<a/>
+						</div>
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								<div class="table-responsive">
+								<table id="example" class="table table-bordered mb-0 table-striped table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Transport Date</th>
+											<th scope="col">Field Clerk 1</th>
+											<th scope="col">Weighbridge Clerk 1</th>
+											<th scope="col">Inter Field Movement</th>
+											<th scope="col">Target Tons</th>
+											<th scope="col">Actual Tons</th>
+											<th scope="col">Day's Condition</th>
+											<th scope="col">Day's Direction</th>
+											<th scope="col">Day's Status</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% for i in transport_infos %}
+										<tr>
+											<td>{{i.transport_date}}</td>
+											<td>{{i.field_clerk_1}}</td>
+											<td>{{i.weighbridge_clerk_1}}</td>
+											<td>{{i.inter_field_movement}}</td>
+											<td>{{i.target_tons}}</td>
+											<td>{{i.actual_tons}}</td>
+											<td>{{i.day_condition}}</td>
+											<td>{{i.day_direction}}</td>
+											<td>{{i.day_status}}</td>
+											<td><a href="{{i.transport_info_id}}/transport_info_update/"><span style="font-size:15px" class="bx bx-pencil text-success" aria-hidden="true"></span></a>
+												<a href="{{i.transport_info_id}}/transport_info_delete/"><span style="font-size:15px" class="bx bx-trash text-danger" aria-hidden="true"></span></a></td>
+										</tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+
+{% endblock %}

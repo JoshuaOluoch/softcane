@@ -1,0 +1,69 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Attendance</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Attendance </li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+				<!--end breadcrumb-->
+				<div class="row">
+					<div class="col-xl-9 mx-auto">
+
+						<div class="d-flex justify-content-end">
+							<a href="{% url 'attendance_create' %}" class="btn btn-primary">Add Attendance<a/>
+						</div>
+						<hr/>
+						<div class="card">
+
+							<div class="card-body">
+								<div class="table-responsive">
+								<table id="example" class="table table-bordered mb-0 table-striped table-hover">
+									<thead>
+										<tr>
+
+											<th scope="col">Name</th>
+											<th scope="col">Deparment</th>
+											<th scope="col">Attendance</th>
+											<th scope="col">Date</th>
+
+
+										</tr>
+									</thead>
+									<tbody>
+                                    {% for i in attendance %}
+										<tr>
+
+											<td>{{i.name}}</td>
+											<td>{{i.department_category}}</td>
+											<td>{{i.attend}}</td>
+											<td>{{i.date}}</td>
+										</tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--end row-->
+			</div>
+		</div>
+		<!--end page wrapper -->
+
+
+{% endblock %}
