@@ -20,6 +20,9 @@ from tenant.views import (our_vehicle_type, vehicle_type_create,
                           VehicleTypeUpdateView, VehicleTypeDeleteView,
                           VehicleUpdateView, VehicleDeleteView,forgotPassword,changePassword)
 
+admin.site.site_header = "Softcane Admin"
+admin.site.site_title = "Softcane Admin Portal"
+admin.site.index_title = "Welcome to Softcane Transport Management Portal"
 urlpatterns = [
     path('',include('dashboard.urls'), name = 'index'),
     path('location/', include('location.urls'), name = 'location'),
